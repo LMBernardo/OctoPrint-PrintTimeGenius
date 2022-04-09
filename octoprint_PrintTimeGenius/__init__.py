@@ -26,7 +26,11 @@ from threading import Timer
 from collections import defaultdict
 from .printer_config import PrinterConfig
 import psutil
-import collections
+try:
+  # Python 3.10
+  import collections.abc
+except ImportError:
+  import collections
 
 def _interpolate(point, left, right):
   """Use the point to interpolate a value from left and right.  point should be a
